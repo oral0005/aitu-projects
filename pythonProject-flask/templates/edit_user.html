@@ -1,0 +1,17 @@
+<!-- Машинанын багасын озгертетин html бет -->
+{% extends 'layout.html' %}
+{% block body %}
+  <div class='row'>
+    <div class='col-5 mx-auto'>
+      <h3>Edit car price</h3><hr>
+      <form method='post' action='{{url_for("edit_user",uid=datas.UID)}}'>
+
+        <div class='form-group'>
+          <label>PRICE</label>
+          <input type='text' name='price' required class='form-control' value='{{datas.UNAME}}'>
+        </div>
+        <input type='submit' value='Submit' class='btn btn-primary'>
+      </form>
+    </div>
+  </div>
+{% endblock %}

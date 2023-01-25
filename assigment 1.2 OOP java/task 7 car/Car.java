@@ -4,6 +4,7 @@ public class Car {
     public double weight;
 
 
+
     public void start(){
         System.out.println("Let's go");
     }
