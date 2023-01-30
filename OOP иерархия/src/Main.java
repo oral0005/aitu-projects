@@ -76,9 +76,10 @@ public class Main {
             Statement statement = co.createStatement();
             ResultSet rs = statement.executeQuery(query);
             int count = 0;
+            String basket = "Your basket: ";
             int b = 0;
             while(rs.next()){
-                if(b == 2) {
+                if(b == 3) {
                     break;
                 }else {
                 int id = rs.getInt("id");
@@ -115,18 +116,26 @@ public class Main {
 
 
                     }
-                    String qeu = "SELECT price FROM '"+ us +"' WHERE id = '"+ a +"'";
+                    String qeu = "SELECT name,price FROM '"+ us +"' WHERE id = '"+ a +"'";
                     ResultSet rs4 = statement.executeQuery(qeu);
-                    String pri = rs3.getString("price");
+                    String pri = rs4.getString("price");
                     c = Integer.parseInt(pri);
+                    String na = rs4.getString("name");
+                    if(c > 0){
+                        count += c;
+                        basket = basket + na + ", ";
+                    }
 
 
-                    count += c;
+
+
 
                 } else if (a == 0) {
                     rs.close();
                     statement.close();
+                    System.out.println(basket);
                     System.out.println("Your check: " + count);
+
                     break;
                 }
             }
