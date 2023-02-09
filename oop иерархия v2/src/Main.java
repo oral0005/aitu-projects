@@ -158,6 +158,8 @@ public class Main {
                     }
                     statement1.close();
                     System.out.println("Your check: " + check +"$");
+                    String del = "DELETE FROM basket";
+                    statement1.executeUpdate(del);
 
                     break;
                 }
