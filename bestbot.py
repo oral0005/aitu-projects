@@ -10,6 +10,10 @@ def send_screenshot(chat_id):
     screen = screenshot('screenshot.jpg')
     bot.send_photo(chat_id, open('screenshot.jpg', 'rb'))
 
+    while True:
+        if keyboard.is_pressed('ctrl+alt'):
+            send_screenshot(chat_id)
+            keyboard.wait('ctrl+alt', suppress=True)
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
@@ -17,8 +21,7 @@ def start_message(message):
 
     while True:
         if keyboard.is_pressed('ctrl+alt'):
-            send_screenshot(message.chat.id)  # Replace CHAT_ID with the appropriate chat ID
-            # Add a delay to prevent multiple screenshots from being taken rapidly
+            send_screenshot(message.chat.id)
             keyboard.wait('ctrl+alt', suppress=True)
 
 
@@ -32,10 +35,6 @@ def send_text(message):
         print("0")
 
 
-# Function to check for Ctrl+Alt key press
-
-
-# Start the key press checking thread
 
 
 bot.polling()
